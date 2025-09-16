@@ -64,7 +64,7 @@ const StudentTable = ({ students, onEdit, onDelete, onViewProfile }) => {
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
-            <tr>
+<tr>
               <th className="px-6 py-4 text-left">
                 <SortButton field="lastName">Student</SortButton>
               </th>
@@ -76,6 +76,9 @@ const StudentTable = ({ students, onEdit, onDelete, onViewProfile }) => {
               </th>
               <th className="px-6 py-4 text-left">
                 <SortButton field="status">Status</SortButton>
+              </th>
+              <th className="px-6 py-4 text-left">
+                <SortButton field="department">Department</SortButton>
               </th>
               <th className="px-6 py-4 text-left">Classes</th>
               <th className="px-6 py-4 text-right">Actions</th>
@@ -112,6 +115,9 @@ const StudentTable = ({ students, onEdit, onDelete, onViewProfile }) => {
                   <Badge variant={getStatusVariant(student.status)}>
                     {student.status}
                   </Badge>
+                </td>
+<td className="px-6 py-4">
+                  <span className="text-sm text-gray-600">{student.department}</span>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex flex-wrap gap-1">

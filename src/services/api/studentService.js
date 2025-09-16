@@ -22,11 +22,12 @@ class StudentService {
   async create(studentData) {
     await this.delay(400);
     const newId = Math.max(...this.students.map(s => s.Id)) + 1;
-    const newStudent = {
+const newStudent = {
       ...studentData,
       Id: newId,
       studentId: studentData.studentId || `STU-${Date.now()}`,
-      enrollmentDate: studentData.enrollmentDate || new Date().toISOString()
+      enrollmentDate: studentData.enrollmentDate || new Date().toISOString(),
+      department: studentData.department || "Computer Science"
     };
     
     this.students.push(newStudent);
@@ -57,12 +58,13 @@ class StudentService {
 
   async searchStudents(query) {
     await this.delay(200);
-    const lowercaseQuery = query.toLowerCase();
+const lowercaseQuery = query.toLowerCase();
     return this.students.filter(student =>
       student.firstName.toLowerCase().includes(lowercaseQuery) ||
       student.lastName.toLowerCase().includes(lowercaseQuery) ||
       student.email.toLowerCase().includes(lowercaseQuery) ||
-      student.studentId.toLowerCase().includes(lowercaseQuery)
+      student.studentId.toLowerCase().includes(lowercaseQuery) ||
+      student.department.toLowerCase().includes(lowercaseQuery)
     );
   }
 

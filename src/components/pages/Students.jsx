@@ -66,7 +66,8 @@ const Students = () => {
         student.firstName.toLowerCase().includes(query) ||
         student.lastName.toLowerCase().includes(query) ||
         student.email.toLowerCase().includes(query) ||
-        student.studentId.toLowerCase().includes(query)
+        student.studentId.toLowerCase().includes(query) ||
+        student.department.toLowerCase().includes(query)
       );
     }
 

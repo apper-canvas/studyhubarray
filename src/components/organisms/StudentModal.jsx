@@ -8,12 +8,13 @@ import ApperIcon from "@/components/ApperIcon";
 import { cn } from "@/utils/cn";
 
 const StudentModal = ({ student, isOpen, onClose, onSave, classes = [] }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
     status: "active",
+    department: "Computer Science",
     parentContact: {
       name: "",
       email: "",
@@ -25,13 +26,14 @@ const StudentModal = ({ student, isOpen, onClose, onSave, classes = [] }) => {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    if (student) {
+if (student) {
       setFormData({
         firstName: student.firstName || "",
         lastName: student.lastName || "",
         email: student.email || "",
         phone: student.phone || "",
         status: student.status || "active",
+        department: student.department || "Computer Science",
         parentContact: student.parentContact || {
           name: "",
           email: "",
@@ -151,7 +153,7 @@ const StudentModal = ({ student, isOpen, onClose, onSave, classes = [] }) => {
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           {/* Basic Information */}
-          <div className="space-y-4">
+<div className="space-y-4">
             <h3 className="text-lg font-medium text-gray-900">Basic Information</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -189,15 +191,30 @@ const StudentModal = ({ student, isOpen, onClose, onSave, classes = [] }) => {
               />
             </div>
 
-            <Select
-              label="Status"
-              value={formData.status}
-              onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value }))}
-            >
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-              <option value="pending">Pending</option>
-            </Select>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Select
+                label="Status"
+                value={formData.status}
+                onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value }))}
+              >
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="pending">Pending</option>
+              </Select>
+              
+              <Select
+                label="Department"
+                value={formData.department}
+                onChange={(e) => setFormData(prev => ({ ...prev, department: e.target.value }))}
+              >
+                <option value="Computer Science">Computer Science</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="English">English</option>
+                <option value="Science">Science</option>
+                <option value="History">History</option>
+                <option value="Art">Art</option>
+              </Select>
+            </div>
           </div>
 
           {/* Parent Contact */}
