@@ -48,6 +48,7 @@ if (student) {
         email: "",
         phone: "",
         status: "active",
+        department: "Computer Science",
         parentContact: {
           name: "",
           email: "",
@@ -87,7 +88,7 @@ if (student) {
     }
 
     try {
-      const studentData = {
+const studentData = {
         ...formData,
         enrollmentDate: student ? student.enrollmentDate : new Date().toISOString(),
         studentId: student ? student.studentId : `STU-${Date.now()}`

@@ -73,7 +73,7 @@ const Grades = () => {
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(grade => {
-        const student = students.find(s => s.Id === grade.studentId);
+const student = students.find(s => s.Id === grade.studentId);
         const studentName = student ? `${student.firstName} ${student.lastName}`.toLowerCase() : "";
         return studentName.includes(query) || grade.assignmentName.toLowerCase().includes(query);
       });
