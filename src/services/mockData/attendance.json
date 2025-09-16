@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "studentId": 1,
+    "classId": 1,
+    "date": "2024-09-15T00:00:00.000Z",
+    "status": "present",
+    "notes": ""
+  },
+  {
+    "Id": 2,
+    "studentId": 1,
+    "classId": 1,
+    "date": "2024-09-17T00:00:00.000Z",
+    "status": "present",
+    "notes": ""
+  },
+  {
+    "Id": 3,
+    "studentId": 1,
+    "classId": 1,
+    "date": "2024-09-19T00:00:00.000Z",
+    "status": "absent",
+    "notes": "Sick leave"
+  },
+  {
+    "Id": 4,
+    "studentId": 2,
+    "classId": 1,
+    "date": "2024-09-15T00:00:00.000Z",
+    "status": "present",
+    "notes": ""
+  },
+  {
+    "Id": 5,
+    "studentId": 2,
+    "classId": 1,
+    "date": "2024-09-17T00:00:00.000Z",
+    "status": "late",
+    "notes": "Arrived 10 minutes late"
+  },
+  {
+    "Id": 6,
+    "studentId": 3,
+    "classId": 2,
+    "date": "2024-09-16T00:00:00.000Z",
+    "status": "present",
+    "notes": ""
+  },
+  {
+    "Id": 7,
+    "studentId": 3,
+    "classId": 2,
+    "date": "2024-09-18T00:00:00.000Z",
+    "status": "present",
+    "notes": ""
+  },
+  {
+    "Id": 8,
+    "studentId": 4,
+    "classId": 1,
+    "date": "2024-09-15T00:00:00.000Z",
+    "status": "present",
+    "notes": ""
+  },
+  {
+    "Id": 9,
+    "studentId": 4,
+    "classId": 3,
+    "date": "2024-09-17T00:00:00.000Z",
+    "status": "absent",
+    "notes": "Family emergency"
+  },
+  {
+    "Id": 10,
+    "studentId": 5,
+    "classId": 2,
+    "date": "2024-09-16T00:00:00.000Z",
+    "status": "present",
+    "notes": ""
+  }
+]

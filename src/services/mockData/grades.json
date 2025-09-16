@@ -1,0 +1,102 @@
+[
+  {
+    "Id": 1,
+    "studentId": 1,
+    "classId": 1,
+    "assignmentName": "Algebra Quiz 1",
+    "category": "Quiz",
+    "points": 85,
+    "maxPoints": 100,
+    "date": "2024-09-15T00:00:00.000Z"
+  },
+  {
+    "Id": 2,
+    "studentId": 1,
+    "classId": 1,
+    "assignmentName": "Geometry Test",
+    "category": "Test",
+    "points": 92,
+    "maxPoints": 100,
+    "date": "2024-09-25T00:00:00.000Z"
+  },
+  {
+    "Id": 3,
+    "studentId": 1,
+    "classId": 2,
+    "assignmentName": "Essay on Shakespeare",
+    "category": "Essay",
+    "points": 88,
+    "maxPoints": 100,
+    "date": "2024-09-20T00:00:00.000Z"
+  },
+  {
+    "Id": 4,
+    "studentId": 2,
+    "classId": 1,
+    "assignmentName": "Algebra Quiz 1",
+    "category": "Quiz",
+    "points": 78,
+    "maxPoints": 100,
+    "date": "2024-09-15T00:00:00.000Z"
+  },
+  {
+    "Id": 5,
+    "studentId": 2,
+    "classId": 1,
+    "assignmentName": "Geometry Test",
+    "category": "Test",
+    "points": 83,
+    "maxPoints": 100,
+    "date": "2024-09-25T00:00:00.000Z"
+  },
+  {
+    "Id": 6,
+    "studentId": 3,
+    "classId": 2,
+    "assignmentName": "Essay on Shakespeare",
+    "category": "Essay",
+    "points": 95,
+    "maxPoints": 100,
+    "date": "2024-09-20T00:00:00.000Z"
+  },
+  {
+    "Id": 7,
+    "studentId": 3,
+    "classId": 3,
+    "assignmentName": "Chemical Reactions Lab",
+    "category": "Lab",
+    "points": 90,
+    "maxPoints": 100,
+    "date": "2024-09-18T00:00:00.000Z"
+  },
+  {
+    "Id": 8,
+    "studentId": 4,
+    "classId": 1,
+    "assignmentName": "Algebra Quiz 1",
+    "category": "Quiz",
+    "points": 88,
+    "maxPoints": 100,
+    "date": "2024-09-15T00:00:00.000Z"
+  },
+  {
+    "Id": 9,
+    "studentId": 5,
+    "classId": 2,
+    "assignmentName": "Essay on Shakespeare",
+    "category": "Essay",
+    "points": 82,
+    "maxPoints": 100,
+    "date": "2024-09-20T00:00:00.000Z"
+  },
+  {
+    "Id": 10,
+    "studentId": 5,
+    "classId": 4,
+    "assignmentName": "World War I Report",
+    "category": "Report",
+    "points": 87,
+    "maxPoints": 100,
+    "date": "2024-09-22T00:00:00.000Z"
+  }
+]
