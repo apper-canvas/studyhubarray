@@ -66,11 +66,32 @@ class StudentService {
     );
   }
 
-  async getStudentsByClass(classId) {
+async getStudentsByClass(classId) {
     await this.delay(200);
     return this.students.filter(student => 
       student.classIds.includes(parseInt(classId))
     );
+  }
+
+  async getGradeLevels() {
+    await this.delay(100);
+    return [
+      { value: "Elementary", label: "Elementary" },
+      { value: "Middle School", label: "Middle School" },
+      { value: "High School", label: "High School" }
+    ];
+  }
+
+  async getSubjects() {
+    await this.delay(100);
+    // In a real app, this would come from the classes service
+    return [
+      { value: "Mathematics", label: "Mathematics" },
+      { value: "English", label: "English" },
+      { value: "Science", label: "Science" },
+      { value: "History", label: "History" },
+      { value: "PE", label: "PE" }
+    ];
   }
 
   delay(ms) {

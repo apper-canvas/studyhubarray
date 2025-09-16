@@ -16,13 +16,17 @@ import classService from "@/services/api/classService";
 const Students = () => {
   const [students, setStudents] = useState([]);
   const [classes, setClasses] = useState([]);
+  const [gradeLevels, setGradeLevels] = useState([]);
+  const [subjects, setSubjects] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   
-  // UI State
+// UI State
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
+  const [gradeFilter, setGradeFilter] = useState("");
+  const [subjectFilter, setSubjectFilter] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingStudent, setEditingStudent] = useState(null);
 
@@ -51,7 +55,7 @@ const Students = () => {
     loadData();
   }, []);
 
-  // Filter students based on search and status
+// Filter students based on search and all filter criteria
   useEffect(() => {
     let filtered = [...students];
 
@@ -71,8 +75,39 @@ const Students = () => {
       filtered = filtered.filter(student => student.status === statusFilter);
     }
 
+    // Apply grade level filter
+    if (gradeFilter) {
+      filtered = filtered.filter(student => {
+        // Get student's classes and determine grade level
+        const studentClasses = classes.filter(cls => student.classIds.includes(cls.Id));
+        const studentGradeLevel = getGradeLevelFromClasses(studentClasses);
+        return studentGradeLevel === gradeFilter;
+      });
+    }
+
+    // Apply subject filter
+    if (subjectFilter) {
+      filtered = filtered.filter(student => {
+        // Check if student is enrolled in classes with the selected subject
+        const studentClasses = classes.filter(cls => student.classIds.includes(cls.Id));
+        return studentClasses.some(cls => cls.subject === subjectFilter);
+      });
+    }
+
     setFilteredStudents(filtered);
-  }, [students, searchQuery, statusFilter]);
+  }, [students, searchQuery, statusFilter, gradeFilter, subjectFilter, classes]);
+
+  // Helper function to determine grade level from classes
+  const getGradeLevelFromClasses = (studentClasses) => {
+    const subjects = studentClasses.map(cls => cls.subject);
+    if (subjects.includes('Mathematics') && subjects.includes('Science')) {
+      return 'High School';
+    } else if (subjects.includes('History') || subjects.includes('English')) {
+      return 'Middle School';
+    } else {
+      return 'Elementary';
+    }
+  };
 
   const handleAddStudent = () => {
     setEditingStudent(null);
@@ -119,12 +154,38 @@ const Students = () => {
     toast.info(`Viewing profile for ${student.firstName} ${student.lastName}`);
   };
 
-  const statusOptions = [
+const statusOptions = [
     { value: "", label: "All Status" },
     { value: "active", label: "Active" },
     { value: "inactive", label: "Inactive" },
     { value: "pending", label: "Pending" }
   ];
+
+  const gradeOptions = [
+    { value: "", label: "All Grade Levels" },
+    { value: "Elementary", label: "Elementary" },
+    { value: "Middle School", label: "Middle School" },
+    { value: "High School", label: "High School" }
+  ];
+
+  const subjectOptions = [
+    { value: "", label: "All Subjects" },
+    { value: "Mathematics", label: "Mathematics" },
+    { value: "English", label: "English" },
+    { value: "Science", label: "Science" },
+    { value: "History", label: "History" },
+    { value: "PE", label: "PE" }
+  ];
+
+  // Count active filters
+  const activeFilterCount = [statusFilter, gradeFilter, subjectFilter].filter(Boolean).length;
+
+  // Clear all filters function
+  const clearAllFilters = () => {
+    setStatusFilter("");
+    setGradeFilter("");
+    setSubjectFilter("");
+  };
 
   if (loading) {
     return (
@@ -168,13 +229,40 @@ const Students = () => {
           />
         </div>
         
-        <div className="flex gap-4">
+<div className="flex flex-wrap gap-4 items-center">
           <FilterDropdown
             label="Status"
             options={statusOptions}
             value={statusFilter}
             onChange={setStatusFilter}
           />
+          <FilterDropdown
+            label="Grade Level"
+            options={gradeOptions}
+            value={gradeFilter}
+            onChange={setGradeFilter}
+          />
+          <FilterDropdown
+            label="Subject"
+            options={subjectOptions}
+            value={subjectFilter}
+            onChange={setSubjectFilter}
+          />
+          {activeFilterCount > 0 && (
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-600">
+                {activeFilterCount} filter{activeFilterCount !== 1 ? 's' : ''} active
+              </span>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={clearAllFilters}
+                className="text-primary-600 hover:text-primary-700 text-sm"
+              >
+                Clear all
+              </Button>
+            </div>
+          )}
         </div>
       </div>
 
